@@ -1,1 +1,20 @@
 <header>Agile-PSP tracker</header>
+
+
+<div class="menuItems" [style.visibility]="(UserLoggedIn == 0) ? 'hidden' : 'visible' ">
+    <div (click)="homeButtonEvent($event)" class="child">
+        <label>Home</label>
+    </div>
+
+    <div (click)="teamButtonEvent($event)" class="child">
+        <label> Team </label>
+    </div>
+
+    <div (click)="profileButtonEvent($event)" class="child" >
+        <label > My Profile </label>
+    </div>
+
+    <div (click)="logoutButtonEvent($event)" class="child">
+        <label > Logout </label>
+    </div>
+</div>

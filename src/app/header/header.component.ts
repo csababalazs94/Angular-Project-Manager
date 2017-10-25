@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService} from '../user.service';
+import {MenubarModule,MenuItem} from 'primeng/primeng';
+
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,8 @@ import { UserService} from '../user.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private myUserService: UserService) {
+  private  UserLoggedIn=1;
+  constructor(private myUserService: UserService, ) {
 
    }
 
@@ -16,4 +19,13 @@ export class HeaderComponent implements OnInit {
     console.log('Is user logged in: ' + this.myUserService.getUserLoggedIn());
   }
 
+  public  showMenuBar(){
+    //this.UserLoggedIn=1;
+  }
+
+  homeButtonEvent(event) {
+    console.log(event);
+  }
 }
+
+            

@@ -3,6 +3,20 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	align-self: center;
+}
+.box{
+	margin-top: 10%;
+}
+
+.popup{
+	margin: 10px 0px;
+	padding:12px;
+	color: #D8000C;
+	background-color: #FFBABA;
+	margin:10px 22px;
+    font-size:2em;
+    vertical-align:middle;
 }
 
 div.input {

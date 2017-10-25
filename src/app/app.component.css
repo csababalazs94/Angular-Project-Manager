@@ -4,15 +4,12 @@
 
 #outlet{
 	flex: 1 1 auto;
-	display: flex;
+	display: block;
 	overflow: hidden;
-  
-	background-color: beige;
 }
 
 #footer {
     position: fixed;
     bottom: 0;
 	width: 100%;
-	background-color: lightblue;
 }

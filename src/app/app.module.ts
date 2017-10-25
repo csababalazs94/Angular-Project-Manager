@@ -1,20 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import  {HttpModule} from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
+import {MessagesModule} from 'primeng/primeng';
+import {MenubarModule} from 'primeng/primeng';
+import { MessageService } from 'primeng/components/common/messageservice';
+
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginFormComponent } from './loginform/loginform.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { RouterModule, Routes } from '@angular/router';
 import { AuthguardGuard } from './authguard.guard';
 import { UserService } from './user.service';
-import {HttpModule} from '@angular/http';
-//import {PopupModule} from 'ng2-opd-popup';
-
-
-//import { UserComponent } from './user/user.component';
-//import { NotfoundComponent } from './notfound/notfound.component';
 
 const appRoutes:Routes = [
   // {
@@ -56,36 +56,19 @@ const appRoutes:Routes = [
     LoginFormComponent, 
     FooterComponent, 
     DashboardComponent//,
-   // PasswordPopupComponent//,
     // UserComponent,
     // NotfoundComponent
   ],
   imports: [
   RouterModule.forRoot(appRoutes),
   BrowserModule,
-  HttpModule//,
+  HttpModule,
+  MessagesModule,
+  MenubarModule
   //PopupModule.forRoot()
   
   ],
-  providers: [UserService, AuthguardGuard],
-  bootstrap: [AppComponent]
-})
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    LoginFormComponent,
-    FooterComponent,
-    DashboardComponent//,
-    //PasswordPopupComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,    
-    //PopupModule.forRoot()
-    
-  ],
-  providers: [],
+  providers: [HeaderComponent,UserService, AuthguardGuard,MessagesModule,MessageService],
   bootstrap: [AppComponent]
 })
 

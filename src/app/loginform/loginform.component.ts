@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import {UserService} from '../user.service';
-//import {PasswordPopupComponent} from '../password-popup/password-popup.component'
+import { UserService} from '../user.service';
+import { DialogModule,Dialog} from 'primeng/primeng';
+import { SelectItem,Message} from 'primeng/components/common/api';
+import { MessageService } from 'primeng/components/common/messageservice';
+import { HeaderComponent} from '../header/header.component';
 
 @Component({
   selector: 'app-loginform',
@@ -11,9 +14,11 @@ import {UserService} from '../user.service';
 
 export class LoginFormComponent implements OnInit {
   userToLogin : String;
-  constructor(private router:Router, private user:UserService) { }
+  msgs: Message[] = [];
+  tagVisibility: String;
+  constructor(private router:Router, private user:UserService,private messageService: MessageService, private headerComponent: HeaderComponent ) { }
 
-  ngOnInit() {}
+  ngOnInit() {this. tagVisibility="display: none;"}
 
   loginUser(e) {
   	e.preventDefault();
@@ -28,17 +33,21 @@ export class LoginFormComponent implements OnInit {
 
   changePage(givenPW: String) {
     this.user.getUserByuserName(this.userToLogin).subscribe(res => {
-      console.log("ActualPW" + res.data.password);
-      console.log("Given PW" + givenPW);
-      if(res.data.password == givenPW){
+      console.log(res);
+      if(res.data == null){
+        this.showPasswordError();        
+      }
+      else if(res.data.password == givenPW){
         console.log("was true");
         this.user.setUserLoggedIn();
+        this.headerComponent.showMenuBar();
         this.router.navigate(['dashboard']);
-      }else{
-       // this.popup.showPopup();
       }
   });
   }
 
+  showPasswordError() {
+    this.msgs = [];
+    this.msgs.push({severity:'error', summary:'Error:', detail:'Please enter correct password'});}
 
 }
